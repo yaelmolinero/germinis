@@ -1,0 +1,30 @@
+---
+import FacebookIcon from "@/assets/icons/social/FacebookIcon.astro";
+import InstagramIcon from "@/assets/icons/social/InstagramIcon.astro";
+import TiktokIcon from "@/assets/icons/social/TiktokIcon.astro";
+import GitHubIcon from "@/assets/icons/social/GitHubIcon.astro";
+
+const socialLinks = [FacebookIcon, InstagramIcon, TiktokIcon];
+---
+
+<div class="flex items-center gap-1">
+  {
+    socialLinks.map((Icon) => (
+      <a
+        href="#"
+        aria-label="Link a las redes sociales."
+        class="p-1 rounded-full text-primary-white hover:text-primary-green hover:bg-primary-white transition-colors duration-100"
+      >
+        <Icon className="size-6" />
+      </a>
+    ))
+  }
+  <a
+    href="https://github.com/yaelmolinero"
+    target="_blank"
+    aria-label="Link a las redes sociales."
+    class="p-1 rounded-full text-primary-white hover:text-primary-green hover:bg-primary-white transition-colors duration-100"
+  >
+    <GitHubIcon className="size-6" />
+  </a>
+</div>

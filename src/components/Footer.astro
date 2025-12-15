@@ -1,0 +1,65 @@
+---
+import isotipo from "@/assets/img/isotipo_blanco.webp";
+import { navigationLinks } from "@/constants.ts";
+import SocialNetworks from "./SocialNetworks.astro";
+---
+
+<footer class="bg-primary-green text-primary-white py-8">
+  <div class="max-w-6xl w-full p-4 mx-auto space-y-4">
+    <div
+      class="flex flex-col md:flex-row justify-between items-start gap-8 flex-wrap"
+    >
+      <div class="w-full lg:w-auto space-y-4">
+        <a href="/" class="flex items-center gap-1">
+          <img src={isotipo.src} alt="Isologo de la empresa" class="w-14" />
+          <h1 class="text-5xl font-bold">Germinis</h1>
+        </a>
+
+        <p class="text-sm lg:max-w-sm">
+          Estamos orgullosos de ofrecer un producto de calidad que promueve la
+          conciencia y resposabilidad por nuesto ambiente.
+        </p>
+      </div>
+
+      <div class="shrink-0 content-between space-y-1">
+        <h4 class="font-semibold">Navegación</h4>
+        {
+          navigationLinks.map(({ name, href }) => (
+            <a href={href} class="block hover:underline">
+              {name}
+            </a>
+          ))
+        }
+      </div>
+
+      <div class="shrink-0 space-y-4">
+        <h4 class="font-semibold">Suscribete</h4>
+        <div class="flex gap-2 items-center">
+          <input
+            type="text"
+            name="suscribe"
+            id="suscribe"
+            placeholder="Ingresa tu email"
+            class="px-4 py-2 bg-primary-white rounded-lg text-primary-black w-64 placeholder:text-neutral-500"
+          />
+          <button
+            type="button"
+            class="px-4 py-2 rounded-lg cursor-pointer bg-green-950 text-primary-white hover:bg-green-950/80 transition-colors"
+            >Suscribir</button
+          >
+        </div>
+      </div>
+    </div>
+
+    <hr />
+
+    <div
+      class="flex flex-col sm:flex-row justify-between sm: sm:items-center gap-4"
+    >
+      <p class="text-sm">
+        &copy; 2025 Germinis. Todos los derechos reservados.
+      </p>
+      <SocialNetworks />
+    </div>
+  </div>
+</footer>

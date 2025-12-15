@@ -1,0 +1,35 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Mision from "@/components/sections/Mision.astro";
+import Vision from "@/components/sections/Vision.astro";
+import Valores from "@/components/sections/Valores.astro";
+import Objetivos from "@/components/sections/Objetivos.astro";
+
+import isologo from "@/assets/img/isologo.webp";
+import ecolapiz from "@/assets/img/ecolapiz.webp";
+---
+
+<Layout title="Nosotros">
+  <div class="h-16"></div>
+
+  <div class="py-6">
+    <img
+      src={isologo.src}
+      alt="Isologo de la empresa"
+      class="mx-auto h-56"
+      loading="eager"
+    />
+  </div>
+
+  <Mision />
+  <Vision />
+  <Valores />
+  <Objetivos />
+
+  <img
+    src={ecolapiz.src}
+    alt="Imagen del producto."
+    class="px-4 py-6 w-full md:w-4/5 mx-auto"
+    loading="lazy"
+  />
+</Layout>

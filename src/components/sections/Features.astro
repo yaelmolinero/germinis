@@ -1,0 +1,66 @@
+---
+import BadgeTitle from "../BadgeTitle.astro";
+import FileCheckIcon from "@/assets/icons/FileCheckIcon.astro";
+import RecycleIcon from "@/assets/icons/RecycleIcon.astro";
+import PencilCheckIcon from "@/assets/icons/PencilCheckIcon.astro";
+import AxeIcon from "@/assets/icons/AxeIcon.astro";
+import PlantIcon from "@/assets/icons/PlantIcon.astro";
+
+const features = [
+  {
+    title: "Cápsula con Semilla",
+    description:
+      "Cápsula biodegradable que protege la semilla y permite su germinación al plantar el lápiz.",
+    Icon: PlantIcon,
+  },
+  {
+    title: "Papel Reciclado",
+    description:
+      "Papel elaborado a partir de materiales reciclados, reduciendo el uso de recursos naturales.",
+    Icon: RecycleIcon,
+  },
+  {
+    title: "Grafito Natural",
+    description:
+      "Grafito de origen natural, libre de metales tóxicos y seguro para el uso diario.",
+    Icon: PencilCheckIcon,
+  },
+  {
+    title: "Resistol Natural",
+    description:
+      "Adhesivo de origen vegetal, biodegradable y libre de químicos contaminantes.",
+    Icon: AxeIcon,
+  },
+];
+---
+
+<section class="py-16 space-y-6">
+  <div class="flex flex-col justify-center items-center gap-6 text-center">
+    <BadgeTitle label="La sustentabilidad es nuestra prioridad.">
+      <FileCheckIcon />
+    </BadgeTitle>
+
+    <h2 class="text-4xl max-w-120">
+      Un Lápiz que Escribe Hoy y Siembra Mañana
+    </h2>
+    <p class="text-sm max-w-120 text-pretty text-neutral-800">
+      Cada material fue seleccionado cuidadosamente para ofrecer una experiencia
+      funcional, responsable y alineada con el cuidado del planeta.
+    </p>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+    {
+      features.map(({ title, description, Icon }) => (
+        <div class="space-y-2 text-center">
+          <div class="flex justify-center">
+            <Icon className="size-14 text-primary-green" />
+          </div>
+
+          <h3 class="text-lg font-semibold text-primary-green">{title}</h3>
+          <p class="text-sm text-pretty">{description}</p>
+        </div>
+      ))
+    }
+  </div>
+</section>

@@ -1,0 +1,46 @@
+---
+import isotipo from "@/assets/img/isotipo_blanco.webp";
+import plantasImg from "@/assets/img/plantas.webp";
+---
+
+<section class="py-8">
+  <div
+    class="flex jusity-between rounded-lg p-8 bg-cover bg-center relative"
+    style={`background-image: url(${plantasImg.src})`}
+  >
+    <div class="w-full z-10 text-primary-white relative">
+      <div class="space-y-6 p-4 md:p-8">
+        <h2 class="text-5xl">Se parte de este cambio</h2>
+
+        <p class="text-sm">
+          Unete a nosotros para darle forma a un futuro sustentable.
+          <br />
+          Ya seas un estudiante, profesional, emprendedor o inovador.
+        </p>
+
+        <div class="space-x-2 *:px-4 *:py-2 *:rounded-full">
+          <a href="/contacto" class="bg-zinc-500/60">Contactanos</a>
+          <a href="/producto" class="bg-primary-green">Ver producto</a>
+        </div>
+      </div>
+
+      <div
+        class="hidden md:block w-44 rounded-lg absolute right-0 top-0 bg-zinc-500/80 p-4 space-y-6"
+      >
+        <img
+          src={isotipo.src}
+          alt="Isotipo de la empresa"
+          class="w-8"
+          loading="lazy"
+        />
+
+        <p class="text-sm">
+          Juntos podemos convertir la responsabilidad en un legado de
+          excelencia.
+        </p>
+      </div>
+    </div>
+
+    <div class="absolute inset-0 bg-black/60 rounded-lg"></div>
+  </div>
+</section>

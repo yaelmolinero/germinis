@@ -1,0 +1,45 @@
+---
+import BadgeTitle from "@/components/BadgeTitle.astro";
+import PlantIcon from "@/assets/icons/PlantIcon.astro";
+import sustentabilidad from "@/assets/img/sustentabilidad.webp";
+---
+
+<section class="min-h-dvh flex flex-col justify-between items-center">
+  <div
+    class="flex-1 flex flex-col justify-center items-center gap-6 text-center"
+  >
+    <BadgeTitle label="Inovando por un futuro sustentable más verde.">
+      <PlantIcon />
+    </BadgeTitle>
+
+    <h1 class="text-5xl font-semibold">Escribes Hoy, Siembras Mañana</h1>
+    <h2 class="text-sm max-w-120">
+      Combinamos responsabilidad y conciencia, creando un lapíz germinable que
+      permita asegurar la repoblación para el cuidado del medio ambiente.
+    </h2>
+
+    <div
+      class="flex items-center w-fit gap-2 *:px-4 *:py-2 *:rounded-full *:shadow-lg *:hover:-translate-y-0.5 *:transition *:duration-100"
+    >
+      <a
+        href="/contacto"
+        class="bg-white text-primary-green hover:bg-neutral-50"
+      >
+        Contacto
+      </a>
+      <a
+        href="/producto"
+        class="bg-primary-green text-white hover:bg-green-900"
+      >
+        Ver Producto
+      </a>
+    </div>
+  </div>
+
+  <div>
+    <img
+      src={sustentabilidad.src}
+      alt="Planta creciendo de la tierra con el planeta atras para reflejar la sustentabildiad"
+    />
+  </div>
+</section>

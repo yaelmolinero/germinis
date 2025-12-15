@@ -1,0 +1,53 @@
+---
+import BadgeTitle from "../BadgeTitle.astro";
+import BoltIcon from "@/assets/icons/BoltIcon.astro";
+
+const objetivos = [
+  {
+    description: "Crear un lápiz completamente biodegradable",
+    grid: "col-span-full md:col-span-4",
+  },
+  {
+    description:
+      "Desarrollar el espacio de almacenamiento dentro del lápiz que mantenga segura la semilla",
+    grid: "col-span-full md:row-start-2 md:col-start-3 md:col-span-6",
+  },
+  {
+    description: "Garantizar la satisfacción del cliente",
+    grid: "col-span-full md:row-start-3 md:col-span-3",
+  },
+  {
+    description: "Llevar a Ecolápiz a instituciones educativas",
+    grid: "col-span-full md:row-start-3 md:col-start-6 md:col-span-3",
+  },
+  {
+    description: "Ser el producto favorito entre las personas",
+    grid: "col-span-full md:row-start-4 md:col-start-4 md:col-span-4",
+  },
+];
+---
+
+<section
+  class="flex flex-col justify-center items-center gap-8 py-16 text-center"
+>
+  <BadgeTitle label="Nuestros Objetivos.">
+    <BoltIcon />
+  </BadgeTitle>
+
+  <h2 class="text-4xl max-w-120">Impulsando cambios con resultados.</h2>
+
+  <p class="text-xl max-w-4/5">
+    Crear un lápiz germinable que permita asegurar la repoblación para el
+    cuidado del medio ambiente.
+  </p>
+
+  <div class="w-full grid grid-cols-8 grid-rows-4 gap-2">
+    {
+      objetivos.map(({ description, grid }) => (
+        <div class={`${grid} p-4 rounded-lg shadow-lg bg-white`}>
+          {description}
+        </div>
+      ))
+    }
+  </div>
+</section>

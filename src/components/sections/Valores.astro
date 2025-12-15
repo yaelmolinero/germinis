@@ -1,0 +1,80 @@
+---
+import FileCheckIcon from "@/assets/icons/FileCheckIcon.astro";
+import BadgeTitle from "@/components/BadgeTitle.astro";
+
+const valores = [
+  {
+    title: "Responsabilidad Social",
+    description:
+      "Mediante nuestro producto queremos promover hábitos de consumo responsable a nuestros consumidores.",
+    type: "secondary",
+    colSpan: "col-1 md:col-span-3",
+  },
+  {
+    title: "Sustentabilidad",
+    description:
+      "La empresa diseña cada lapíz con la misión de que pueda reintegrarse de nuevo al medio ambiente convirtiendose en una nueva planta, fomentando el consumo sustentable.",
+    type: "primary",
+    colSpan: "col-1 md:col-span-5",
+  },
+  {
+    title: "Responsabilidad Ambiental",
+    description:
+      "Los lápices están diseñados para crear el menor impacto ambiental posible además de contribuir la regeneración de la naturaleza.",
+    type: "secondary",
+    colSpan: "col-1 md:col-span-5",
+  },
+  {
+    title: "Innovación",
+    description:
+      "Nuestro producto busca convertir un objeto cotidiano en algo que apoye el medio ambiente, con una idea original y fácil de entender.",
+    type: "secondary",
+    colSpan: "col-1 md:col-span-3",
+  },
+  {
+    title: "Trabajar en Equipo",
+    description:
+      "Nosotros trabajamos juntos para lograr ver todas las perspectivas posibles de nuestro producto y así buscar lo mejor para el medio ambiente y nuestros consumidores.",
+    type: "primary",
+    colSpan: "col-1 md:col-span-8",
+  },
+];
+---
+
+<section class="py-16 space-y-6">
+  <div class="flex flex-col justify-center items-center gap-6 text-center">
+    <BadgeTitle label="Pilares Centrales de la Sostenibilidad.">
+      <FileCheckIcon />
+    </BadgeTitle>
+
+    <h2 class="text-4xl max-w-120">Las Bases de Nuestro Compromiso</h2>
+    <p class="text-sm max-w-120 text-pretty text-neutral-800">
+      Nuestro trabajo esta guiado por cinco pilares que aseguran que cada
+      solución que creamos equilibra responsabilidad el ambiente con producto de
+      calidad.
+    </p>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-8 gap-2">
+    {
+      valores.map(({ title, description, type, colSpan }) => {
+        const isPrimary = type === "primary";
+
+        return (
+          <div
+            class={`rounded-lg p-7 shadow-lg space-y-4 ${colSpan} ${isPrimary ? "bg-primary-green text-primary-white" : "bg-neutral-50"}`}
+          >
+            <div
+              class={`w-fit p-2 rounded-lg shadow-xl ${isPrimary ? "bg-white/30 *:text-white" : "bg-white"}`}
+            >
+              <FileCheckIcon />
+            </div>
+
+            <h3 class="font-semibold text-lg">{title}</h3>
+            <p class="text-sm text-pretty">{description}</p>
+          </div>
+        );
+      })
+    }
+  </div>
+</section>

@@ -1,0 +1,86 @@
+---
+import { navigationLinks } from "@/constants.ts";
+
+import isotipo from "@/assets/img/isotipo_verde.webp";
+import MenuIcon from "@/assets/icons/MenuIcon.astro";
+import ShoppingCartIcon from "@/assets/icons/ShoppingCartIcon.astro";
+
+const currentPath = new URL(Astro.request.url).pathname;
+---
+
+<nav class="fixed inset-x-0 top-0 bg-primary-bg z-10">
+  <div
+    class="max-w-6xl w-full p-4 mx-auto flex justify-between items-center flex-wrap relative"
+  >
+    <div class="shrink-0 hover:-translate-y-0.5 transition duration-100">
+      <a href="/" class="flex items-center gap-1">
+        <img src={isotipo.src} alt="Isologo de la empresa" class="w-8" />
+        <h1 class="text-2xl font-extrabold text-primary-green">Germinis</h1>
+      </a>
+    </div>
+
+    <div
+      class="order-3 w-full md:order-0 md:w-auto absolute inset-x-0 bottom-full md:static"
+      id="offcanvas"
+    >
+      <ul
+        class="flex flex-col md:flex-row gap-1 md:items-center max-md:p-2 max-md:bg-primary-bg"
+      >
+        {
+          navigationLinks.map(({ name, href }) => {
+            const isActive = href === currentPath;
+
+            return (
+              <li class="hover:-translate-y-0.5 transition duration-100">
+                <a
+                  href={href}
+                  class={`max-md:block px-4 py-1 md:py-0.5 rounded-full w-full hover:bg-white hover:shadow-md transition duration-100 ${isActive && "bg-white shadow-xl"}`}
+                >
+                  {name}
+                </a>
+              </li>
+            );
+          })
+        }
+      </ul>
+    </div>
+
+    <div class="shrink-0 max-w-40 md:w-full space-x-4">
+      <button
+        type="button"
+        aria-label="Carrito de compras"
+        class="cursor-pointer hover:-translate-y-0.5 transition duration-100"
+      >
+        <ShoppingCartIcon className="text-primary-green size-8" />
+      </button>
+
+      <button
+        type="button"
+        aria-label="Mostrar menu de navegación"
+        id="showMenu"
+        class="cursor-pointer md:hidden"
+      >
+        <MenuIcon className="text-primary-green size-8" />
+      </button>
+    </div>
+  </div>
+</nav>
+
+<style>
+  @reference "tailwindcss";
+
+  #offcanvas.show {
+    @apply max-md:h-dvh max-md:bg-black/40 top-full;
+  }
+</style>
+
+<script is:inline>
+  const btn = document.getElementById("showMenu");
+  const offcanvas = document.getElementById("offcanvas");
+
+  btn.addEventListener("click", () => {
+    document.getElementById("offcanvas").classList.toggle("show");
+  });
+
+  offcanvas.addEventListener("click", () => offcanvas.classList.remove("show"));
+</script>

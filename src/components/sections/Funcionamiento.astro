@@ -1,0 +1,71 @@
+---
+import BadgeTitle from "../BadgeTitle.astro";
+import LearnIcon from "@/assets/icons/LearnIcon.astro";
+import lapiz1 from "@/assets/img/lapiz_plantado_1.webp";
+import lapiz2 from "@/assets/img/lapiz_plantado_2.webp";
+import lapiz3 from "@/assets/img/lapiz_plantado_3.webp";
+
+const howToUse = [
+  {
+    title: "Entierra el lápiz",
+    description:
+      "Coloca el extremo que contiene la semilla dentro de una maceta con tierra, dejando el resto del lápiz visible.",
+    img: lapiz1,
+  },
+  {
+    title: "Riégalo diaramente",
+    description:
+      "Mantén la tierra humeda, sin enchrcar, para facilitar la activación de la semilla.",
+    img: lapiz2,
+  },
+  {
+    title: "Observa cómo germina",
+    description:
+      "Después de unos días, la semilla comenzará a brotar y dará inicio a una nueva planta.",
+    img: lapiz3,
+  },
+];
+---
+
+<section class="py-16 space-y-6">
+  <div class="flex flex-col justify-center items-center gap-6 text-center">
+    <BadgeTitle label="Ayudar a la naturaleza nunca habia sido tan fácil.">
+      <LearnIcon />
+    </BadgeTitle>
+
+    <h2 class="text-4xl max-w-120">
+      Escribe, Planta y Deja que la Naturaleza Haga su Trabajo
+    </h2>
+    <p class="text-sm max-w-120 text-pretty text-neutral-800">
+      Acompaña todo su ciclo de vida de forma conciente: comienza com una
+      herramienta de escritura y termina convirtiéndose en una planta.
+    </p>
+  </div>
+
+  <ol>
+    {
+      howToUse.map(({ title, description, img }, index) => (
+        <li>
+          <div class="relative grid md:grid-cols-4 gap-4 md:gap-32 mx-12 pb-12">
+            <div class="md:col-span-2 order-1 md:order-0">
+              <img src={img.src} alt="temp" class="max-h-50 mx-auto" />
+            </div>
+
+            <div class="md:col-span-2 text-center md:text-start pt-2 space-y-4">
+              <h3 class="text-2xl font-semibold text-primary-green">{title}</h3>
+              <p class="text-sm text-pretty">{description}</p>
+            </div>
+
+            <div class="absolute inset-y-0 -left-7 md:inset-x-1/2 border-l-2 border-black/20">
+              <div class="sticky top-18 translate-y-2 -translate-x-1/2 size-10 bg-primary-green rounded-full flex items-center justify-center">
+                <span class="text-xl font-semibold text-primary-white">
+                  {index + 1}
+                </span>
+              </div>
+            </div>
+          </div>
+        </li>
+      ))
+    }
+  </ol>
+</section>
