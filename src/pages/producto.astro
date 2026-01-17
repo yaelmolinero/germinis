@@ -1,6 +1,7 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import Funcionamiento from "@/components/sections/Funcionamiento.astro";
+import Build from "@/components/sections/Build.astro";
 
 import empaqueImg from "@/assets/img/producto.jpeg";
 import ecolapiz from "@/assets/img/ecolapiz.webp";
@@ -61,7 +62,7 @@ const caracteristicas = [
       </div>
 
       <div class="space-y-2">
-        <button
+        <!-- <button
           type="button"
           class="w-full text-center py-2 rounded-lg bg-primary-green text-primary-white cursor-pointer hover:bg-green-900 transition-colors duration-100"
           >Comprar
@@ -70,7 +71,7 @@ const caracteristicas = [
           type="button"
           class="w-full text-center py-2 rounded-lg outline outline-primary-black cursor-pointer hover:bg-white transition-colors duration-100"
           >Agregar al Carrito
-        </button>
+        </button> -->
       </div>
 
       <ul class="space-y-4">
@@ -87,6 +88,8 @@ const caracteristicas = [
       </ul>
     </div>
   </article>
+
+  <Build />
 
   <Funcionamiento />
 

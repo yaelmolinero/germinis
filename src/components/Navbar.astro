@@ -46,13 +46,12 @@ const currentPath = new URL(Astro.request.url).pathname;
     </div>
 
     <div class="shrink-0 space-x-4">
-      <button
-        type="button"
-        aria-label="Carrito de compras"
-        class="cursor-pointer hover:-translate-y-0.5 transition duration-100"
+      <a
+        href="/producto"
+        class="inline-block hover:-translate-y-0.5 transition duration-100"
       >
         <ShoppingCartIcon className="text-primary-green size-8" />
-      </button>
+      </a>
 
       <button
         type="button"
