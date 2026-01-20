@@ -1,0 +1,114 @@
+---
+import Arrow from "@/assets/icons/Arrow.astro";
+import presentacion1 from "@/assets/img/producto/presentacion_1.webp";
+import presentacion2 from "@/assets/img/producto/presentacion_2.webp";
+import presentacion3 from "@/assets/img/producto/presentacion_3.webp";
+import presentacion4 from "@/assets/img/producto/presentacion_4.webp";
+
+const images = [presentacion1, presentacion2, presentacion3, presentacion4];
+---
+
+<div class="relative max-w-full overflow-hidden" id="carousel">
+  <div
+    class="flex will-change-transform transition-transform ease-in-out duration-400"
+    id="track"
+  >
+    {
+      images.map((image, index) => (
+        <div class="min-w-full touch-pan-y" data-slide>
+          <img
+            class="w-full block rounded-2xl"
+            src={image.src}
+            alt={`Imagen ${index + 1}`}
+            loading={index === 0 ? "eager" : "lazy"}
+          />
+        </div>
+      ))
+    }
+  </div>
+
+  <button
+    class="hidden md:block absolute top-1/2 left-4 text-3xl -translate-y-1/2 bg-black/50 z-10 cursor-pointer p-2 rounded-full hover:bg-black/70 transition-colors duration-100"
+    aria-label="Imagen anterior"
+    id="prevBtn"
+  >
+    <Arrow className="size-6 text-white rotate-180" />
+  </button>
+  <button
+    class="hidden md:block absolute top-1/2 right-4 text-3xl -translate-y-1/2 bg-black/50 z-10 cursor-pointer p-2 rounded-full hover:bg-black/70 transition-colors duration-100"
+    aria-label="Imagen siguiente"
+    id="nextBtn"
+  >
+    <Arrow className="size-6 text-white" />
+  </button>
+
+  <div class="flex justify-center gap-2 mt-3">
+    {
+      images.map((_, index) => (
+        <button
+          class="size-2.5 rounded-full bg-neutral-300 cursor-pointer carousel__dot [&.active]:bg-neutral-800"
+          aria-label={`Ir a imagen ${index + 1}`}
+        />
+      ))
+    }
+  </div>
+</div>
+
+<script>
+  const carousel = document.getElementById("carousel") as HTMLElement;
+  const track = document.getElementById("track") as HTMLElement;
+  const slides = [...carousel.querySelectorAll("[data-slide]")];
+
+  const prevBtn = document.getElementById("prevBtn");
+  const nextBtn = document.getElementById("nextBtn");
+  const dots = [...carousel.querySelectorAll("button.carousel__dot")];
+
+  let index = 0;
+  let startX = 0;
+  let currentX = 0;
+  let isDragging = false;
+
+  function updateCarousel() {
+    track.style.transform = `translateX(-${index * 100}%)`;
+    dots.forEach((dot, i) => dot.classList.toggle("active", i === index));
+  }
+
+  prevBtn?.addEventListener("click", () => {
+    index = (index - 1 + slides.length) % slides.length;
+    updateCarousel();
+  });
+
+  nextBtn?.addEventListener("click", () => {
+    index = (index + 1) % slides.length;
+    updateCarousel();
+  });
+
+  dots.forEach((dot, i) =>
+    dot.addEventListener("click", () => {
+      index = i;
+      updateCarousel();
+    }),
+  );
+
+  // Swipe móvil
+  track.addEventListener("touchstart", (e) => {
+    startX = e.touches[0].clientX;
+    isDragging = true;
+  });
+
+  track.addEventListener("touchmove", (e) => {
+    if (!isDragging) return;
+    currentX = e.touches[0].clientX;
+  });
+
+  track.addEventListener("touchend", () => {
+    if (!isDragging) return;
+    const diff = startX - currentX;
+    if (diff > 50) index = Math.min(index + 1, slides.length - 1);
+    if (diff < -50) index = Math.max(index - 1, 0);
+    updateCarousel();
+    isDragging = false;
+  });
+
+  updateCarousel();
+</script>
